@@ -13,7 +13,7 @@ char *generate_password() {
   if (num_positions[num_pos] == cap_let_positions[cap_pos])
     cap_pos++;
 
-  char *pass = malloc(PASSWORD_LENGTH, sizeof(char));
+  char *pass = malloc(PASSWORD_LENGTH * sizeof(char));
 
   int j = 0;
   for (int i = 0; i < PASSWORD_LENGTH; i++) {
