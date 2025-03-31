@@ -1,5 +1,11 @@
 #include "include/password_generator.h"
 
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
 char *generate_password() {
   srand(time(NULL) + clock());
 
@@ -13,7 +19,11 @@ char *generate_password() {
   if (num_positions[num_pos] == cap_let_positions[cap_pos])
     cap_pos++;
 
-  char *pass = malloc(PASSWORD_LENGTH * sizeof(char));
+  char *pass = malloc((PASSWORD_LENGTH + 1) * sizeof(char));
+
+  if (pass == NULL) {
+    return NULL;
+  }
 
   int j = 0;
   for (int i = 0; i < PASSWORD_LENGTH; i++) {

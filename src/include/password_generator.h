@@ -1,9 +1,3 @@
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-
 #define PASSWORD_LENGTH 20
 
 #define VOWELS "aeiouy"
