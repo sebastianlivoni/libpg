@@ -4,7 +4,7 @@ This program generates passwords following the iCloud Keychain password practise
 
 - 20 characters long
 - 3 substrings of 6 letters syllables seperated by a hyphen (-)
-- A single digits at either side of the hyphen (-) or at the end of the password
+- A single digit at either side of the hyphen (-) or at the end of the password
 - A single random uppercase letter
 
 [Apple strong password](https://support.apple.com/guide/security/secc84c811c4/web)
