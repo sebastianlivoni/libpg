@@ -1,14 +1,9 @@
+#pragma once
+
 #define PASSWORD_LENGTH 20
 
-#define VOWELS "aeiouy"
-#define VOWELS_LENGTH 5
+struct password {
+    char data[PASSWORD_LENGTH + 1]; 
+} typedef password_t;
 
-#define CONSONANTS "bcdfghjklmnqprstvwzx"
-#define CONSONANTS_LENGTH 20
-
-#define NUMBERS "0123456789"
-#define NUMBERS_LENGTH 10
-
-#define SEPARATOR '-'
-
-char *generate_password();
+password_t generate_password();

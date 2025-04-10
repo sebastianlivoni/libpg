@@ -5,7 +5,19 @@
 #include <stdlib.h>
 #include <time.h>
 
-char *generate_password() {
+#define VOWELS "aeiouy"
+#define VOWELS_LENGTH 5
+
+#define CONSONANTS "bcdfghjklmnqprstvwzx"
+#define CONSONANTS_LENGTH 20
+
+#define NUMBERS "0123456789"
+#define NUMBERS_LENGTH 10
+
+#define SEPARATOR '-'
+
+password_t generate_password() {
+  
   srand(time(NULL) + clock());
 
   int num_positions[] = {5, 7, 12, 14, 19};
@@ -18,31 +30,27 @@ char *generate_password() {
   if (num_positions[num_pos] == cap_let_positions[cap_pos])
     cap_pos++;
 
-  char *pass = malloc((PASSWORD_LENGTH + 1) * sizeof(char));
-
-  if (pass == NULL) {
-    return NULL;
-  }
+  password_t password;
 
   int j = 0;
   for (int i = 0; i < PASSWORD_LENGTH; i++) {
     if (i == 6 || i == 13) {
-      pass[i] = SEPARATOR;
+      password.data[i] = SEPARATOR;
       j = 0;
     } else if (i == num_positions[num_pos]) {
-      pass[i] = NUMBERS[rand() % NUMBERS_LENGTH];
+      password.data[i] = NUMBERS[rand() % NUMBERS_LENGTH];
     } else if (j == 1 || j == 4) {
-      pass[i] = VOWELS[rand() % VOWELS_LENGTH];
+      password.data[i] = VOWELS[rand() % VOWELS_LENGTH];
       j++;
     } else {
-      pass[i] = CONSONANTS[rand() % CONSONANTS_LENGTH];
+      password.data[i] = CONSONANTS[rand() % CONSONANTS_LENGTH];
       j++;
     }
   }
 
-  pass[cap_pos] = toupper(pass[cap_pos]);
+  password.data[cap_pos] = toupper(password.data[cap_pos]);
 
-  pass[PASSWORD_LENGTH] = '\0';
+  password.data[PASSWORD_LENGTH] = '\0';
 
-  return pass;
+  return password;
 }
